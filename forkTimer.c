@@ -48,7 +48,8 @@ int main(void)
 		{    
 			write(pipefd[1], &(time[i]), 1);	//write to pipe
 			close(pipefd[1]);         			// Reader will see EOF
-			break;								//Exit loop, the child needs to be reaped to prevent "fork bomb"
+			exit(EXIT_SUCCESS);							//Exit the program (also reaps children)
+								//Exit loop, the child needs to be reaped to prevent "fork bomb"
 		}
 			else {            					//Parent reads from pipe
 			read(pipefd[0], &bufSec, 1);		//Read value in pipe
