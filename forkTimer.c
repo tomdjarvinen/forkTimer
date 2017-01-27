@@ -32,7 +32,7 @@ int main(void)
 	
 	int i;										//Dummy counter for loop
 	
-	for(i = 0; i< 100; i = i + 1)				//this loop repeatedly executes a fork timing mechanism
+	for(i = 0; i< 1000; i = i + 1)				//this loop repeatedly executes a fork timing mechanism
 	{
 		gettimeofday(&t1,NULL);					//get starting time
 		cpid = fork();							//Execute fork
