@@ -48,7 +48,7 @@ int main(void)
 		{    
 			write(pipefd[1], &(time[i]), 1);	//write to pipe
 			close(pipefd[1]);         			// Reader will see EOF
-			exit(EXIT_SUCCESS);							//Exit the program (also reaps children)
+			_exit(EXIT_SUCCESS);							//Exit the program (also reaps children)
 								//Exit loop, the child needs to be reaped to prevent "fork bomb"
 		}
 			else {            					//Parent reads from pipe
@@ -56,6 +56,7 @@ int main(void)
 			if(bufSec < time[i])				//Check whether parent or child ran first.  This is necessary, because it is up to the scheduler to determine what goes first
 				time[i]=bufSec;					//If yes, replace the value in our array
 			printf("%d\n",time[i]);	//Write result to terminal.  This is not the only way to record result, but it was chosen for simplicity.
+			
 		}
 	}
 	exit(EXIT_SUCCESS);							//Exit the program (also reaps children)
